@@ -52,9 +52,9 @@ if(isset($_POST['submit'])){
 <header>
    <h2 class="logo-text">AISpelling</h2>
    <nav class="navigation">
-      <a href="http://localhost/login_system/bac.php">Home</a> 
+      <a href="http://localhost/demo_login_system/web_home.php">Home</a> 
       <!--<button class ="btnLogin-popup">Login</button>-->
-      <a href="http://localhost/login_system/login_form.php" class="btnLogin-popup">Login</a>
+      <a href="http://localhost/demo_login_system/login_form.php" class="btnLogin-popup">Login</a>
    </header>
 
 <div class="form-container">
