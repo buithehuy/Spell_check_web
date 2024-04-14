@@ -1,4 +1,4 @@
-**Web kiểm tra chính tả**
+<h1>**Web kiểm tra chính tả**</h1>
 
 Thành viên:<br>
 Bùi Thế Huy 22022667 <br>
