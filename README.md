@@ -1,4 +1,4 @@
-<h1> <text-align:center>Web kiểm tra chính tả </text-align:center> </h1>
+<h1 text-align:center;> Web kiểm tra chính tả </h1>
 
 Thành viên:<br>
 Bùi Thế Huy 22022667 <br>
