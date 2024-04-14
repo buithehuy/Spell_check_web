@@ -1,4 +1,4 @@
-<h1 style = "text-align:center;"> Web kiểm tra chính tả </h1>
+# Web kiểm tra chính tả 
 
 Thành viên:<br>
 Bùi Thế Huy 22022667 <br>
