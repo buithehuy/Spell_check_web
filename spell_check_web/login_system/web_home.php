@@ -9,18 +9,14 @@ if(isset($_POST['login'])){
    $name = mysqli_real_escape_string($conn, $_POST['name']);
    $email = mysqli_real_escape_string($conn, $_POST['email']);
    $pass = md5($_POST['password']);
-   $cpass = md5($_POST['cpassword']);
 
    $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
    $result = mysqli_query($conn, $select);
 
    if(mysqli_num_rows($result) > 0){
       $row = mysqli_fetch_array($result);
-   if($row['user_type'] == 'user'){
       $_SESSION['user_name'] = $row['name'];
-      header('location:user_page.php');
-   }
-     
+      header('location:http://localhost/spell_check_web/main_system/user_page.php');
    }else{
       $error[] = 'incorrect email or password!';
    }
@@ -50,7 +46,7 @@ if(isset($_POST['register'])){
       }else{
          $insert = "INSERT INTO user_form(name, email, password) VALUES('$name','$email','$pass')";
          mysqli_query($conn, $insert);
-         header('location:web_home.php');
+         header('location:http://localhost/spell_check_web/main_system/user_page.php');
       }
    }
 
@@ -90,7 +86,7 @@ if(isset($_POST['register'])){
             <h2>Giới thiệu về AI Spelling</h2>
             <p>AI Spelling là một trang web cung cấp dịch vụ chữa lỗi chính tả tiếng Việt dựa trên công nghệ trí tuệ nhân tạo (AI).
                 Giúp người dùng kiểm tra và sửa các lỗi chính tả trong văn bản tiếng Việt một cách nhanh chóng và hiệu quả.</p>
-                <a href="#" class="try-link">Thử Ngay   ></a>
+                <a href="http://localhost/spell_check_web/main_system/main.php" class="try-link">Thử Ngay   ></a>
         </div>
         
     </div>

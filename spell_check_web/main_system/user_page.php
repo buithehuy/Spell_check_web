@@ -1,3 +1,11 @@
+<?php
+    @include 'login_system/config.php';
+    session_start();
+
+    if(!isset($_SESSION['user_name'])){
+         header('location:http://localhost/spell_check_web/login_system/web_home.php');
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,16 +25,16 @@
         <a href="http://localhost/spell_check_web/login_system/web_home.php" class="logo-text">AISpelling</a>
         <!--<h2 class="logo-text">AISpelling</h2>-->
         <nav class="navigation">
-            <a class= href="http://localhost/spell_check_web/login_system/web_home.php">
+            <a href="http://localhost/spell_check_web/login_system/web_home.php">
                 <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
             </a>
             <a href="#">
                 <span class="icon"><ion-icon name="share-social-outline"></ion-icon></span>
             </a>
-            <a href="http://localhost/spell_check_web/login_system/web_home.php">
-                <button class ="btnLogin-popup">Login</button>
-            </a>
-            
+            <button class ="btnUser">
+                <span class="icon"><ion-icon name="person-outline"></ion-icon></ion-icon></span>
+                <h1><span><?php echo $_SESSION['user_name'] ?></span></h1>
+            </button>
         </nav>
     </header>
 
@@ -39,7 +47,6 @@
         
     </div>
 
-    <script src="script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

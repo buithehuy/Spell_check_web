@@ -18,8 +18,15 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 99;
-    background: #162938;
+    background: url('background2.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
  }
+
+.navigation {
+   margin-right: 100px;
+   display: flex;
+}
 
 
  
@@ -37,24 +44,42 @@ header {
    font-size: 48px; 
  }
 
+
+
+
  .navigation .btnUser {
-    width: 60px;
-    height: 60px;
-    background: transparent;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    outline: none;
-    cursor: pointer;
-    font-size: 1em;
-    color: #fff;
-    font-weight: 500;
-    margin-left: 40px;
-    transition: .5s;
- }
+   display: flex; 
+   align-items: center;
+   width: auto; 
+   background: transparent;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   font-size: 1em;
+   color: #fff;
+   font-weight: 500;
+   margin-left: 40px;
+   transition: .5s;
+}
+
+.navigation .btnUser .icon {
+   margin-right: 10px; /* Khoảng cách giữa biểu tượng và tên người dùng */
+}
+
+.navigation .btnUser h1 {
+   margin: 0; /* Loại bỏ margin mặc định của thẻ h1 */
+   font-size: inherit; /* Kế thừa font-size từ cha (.btnUser) */
+}
+
+.navigation .btnUser h1 span {
+   white-space: nowrap; /* Ngăn chặn tên người dùng bị ngắt dòng */
+}
  
+
+
+
  .navigation .btnUser:hover {
-    background: #fff;
-    color : #162938
+    color : #ddd
  }
  
  .navigation a::after {
@@ -80,3 +105,66 @@ header {
     color: #fff;
     font-weight: 600;
  }
+
+ .navigation .btnLogin-popup {
+   width: 130px;
+   height: 50px;
+   background: transparent;
+   border: 2px solid #fff;
+   outline: none;
+   border-radius: 6px;
+   cursor: pointer;
+   font-size: 1.1em;
+   color: #fff;
+   font-weight: 500;
+   margin-left: 40px;
+   transition: .5s;
+   
+}
+
+.navigation .btnLogin-popup:hover {
+   background: #fff;
+   color : #162938
+}
+
+ .input-container {
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    height: 100vh; 
+}
+
+.input-field {
+    width: 900px; 
+    height: 400px; 
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px 0 0 5px; 
+    border: 2px solid #ccc;
+    outline: none;
+    background: #ddd;
+}
+
+.check {
+   width: 150px;
+   height: 60px;
+   padding: 3px;
+   border: 2px solid #ccc;
+   background-color: #162938;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+   margin-left: 30px;
+   margin-top: 340px;
+   color: #fff;
+}
+
+.check .icon {
+   font-size: 36px;
+   justify-content: center;
+}
+
+.check:hover {
+    background-color: #fff;
+    color: #162938;
+}
