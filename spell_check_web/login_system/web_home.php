@@ -81,8 +81,6 @@ if(isset($_POST['register'])){
         <!--<h2 class="logo-text">AISpelling</h2>-->
         <nav class="navigation">
             <a href="web_home.php">Home</a>
-            <a href="#">About</a> 
-            <a href="#">Contact</a> 
             <button class ="btnLogin-popup">Login</button>
     </header>
 
@@ -164,5 +162,5 @@ if(isset($_POST['register'])){
     </div>
     <script src="script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
