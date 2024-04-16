@@ -80,7 +80,7 @@ if(isset($_POST['register'])){
         <a href="web_home.php" class="logo-text">AISpelling</a>
         <!--<h2 class="logo-text">AISpelling</h2>-->
         <nav class="navigation">
-            <a href="http://localhost/login_system/web_home.php">Home</a>
+            <a href="web_home.php">Home</a>
             <a href="#">About</a> 
             <a href="#">Contact</a> 
             <button class ="btnLogin-popup">Login</button>
