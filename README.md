@@ -5,7 +5,7 @@ Bùi Thế Huy 22022667 <br>
 Cao Tuấn Anh 22022562 <br>
 Vũ Tiến Triển 19020864
 
-Đây là dự án web kiểm tra chính tả được viết bằng HTML, CSS và PHP. Dự án sử dụng XAMPP để chạy cơ sở dữ liệu.
+Đây là dự án web kiểm tra chính tả được viết bằng HTML, CSS và framwork Django. Dự án sử dụng XAMPP để chạy cơ sở dữ liệu.
 
 ## Cài Đặt
 
@@ -13,7 +13,7 @@ Vũ Tiến Triển 19020864
 2. Clone repository này về máy tính của bạn.
 3. Mở XAMPP và khởi động Apache và MySQL.
 4. Import cơ sở dữ liệu từ file `database.sql`.
-5. Mở trình duyệt và truy cập địa chỉ `http://localhost/path/to/index.php`.
+
 
 ## Đóng Góp
 

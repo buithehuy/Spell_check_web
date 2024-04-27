@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+    <div class="intro-section">
+        <img class="img" src="{% static 'image/logo.png' %}" alt="Logo">
+        <div class="content text">
+            <h2>Giới thiệu về AI Spelling</h2>
+            <p>AI Spelling là một trang web cung cấp dịch vụ chữa lỗi chính tả tiếng Việt dựa trên công nghệ trí tuệ nhân tạo (AI).
+                Giúp người dùng kiểm tra và sửa các lỗi chính tả trong văn bản tiếng Việt một cách nhanh chóng và hiệu quả.</p>
+            <a href="{% url 'main_page' %}" class="try-link">Thử Ngay</a>
+        </div>
+    </div>
+{% endblock %}
