@@ -72,8 +72,8 @@ def register(request):
                          "Your Account has been created succesfully!! Please check your email to confirm your email address in order to activate your account.")
 
         # Welcome Email
-        subject = "Welcome to ThreeBoys"
-        message = "Hello " + myuser.first_name + "!! \n" + "Welcome to ThreeBoys!! \nThank you for visiting our website\n. We have also sent you a confirmation email, please confirm your email address. \n\nThanking You\nShovit Nepal"
+        subject = "Welcome to AISpelling"
+        message = "Hello " + myuser.first_name + "!! \n" + "Welcome to AISpelling!! \nThank you for visiting our website\n. We have also sent you a confirmation email, please confirm your email address. \n\nThanking You\nShovit Nepal"
         from_email = settings.EMAIL_HOST_USER
         to_list = [myuser.email]
         send_mail(subject, message, from_email, to_list, fail_silently=True)
@@ -97,6 +97,23 @@ def register(request):
         return redirect('login')
 
     return render(request, "register.html")
+
+def activate(request,uidb64,token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        myuser = User.objects.get(pk=uid)
+    except (TypeError,ValueError,OverflowError,User.DoesNotExist):
+        myuser = None
+
+    if myuser is not None and generate_token.check_token(myuser,token):
+        myuser.is_active = True
+        # user.profile.signup_confirmation = True
+        myuser.save()
+        login(request,myuser)
+        messages.success(request, "Your Account has been activated!!")
+        return redirect('login')
+    else:
+        return render(request,'activation_failed.html')
 
 def main_page(request):
     return render(request, 'main.html')
