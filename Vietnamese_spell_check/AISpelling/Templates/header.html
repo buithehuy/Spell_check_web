@@ -1,0 +1,15 @@
+<header>
+    <a href="{% url 'home' %}" class="logo-text">AISpelling</a>
+    <!--<h2 class="logo-text">AISpelling</h2>-->
+    <nav class="navigation">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="#">Contact</a>
+        <a href="#">About</a>
+        {% if user.is_authenticated %}
+        <button onclick="location.href='{% url 'logout' %}'" class="btnLogin-popup">Log out</button>
+
+        {% else %}
+        <button onclick="location.href='{% url 'login' %}'" class="btnLogin-popup">Log in</button>
+        {% endif %}
+    </nav>
+</header>

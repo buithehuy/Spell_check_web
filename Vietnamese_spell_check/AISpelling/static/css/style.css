@@ -10,6 +10,7 @@
 body {
    display: flex;
    justify-content: center;
+   flex-direction: column;
    align-items:center;
    min-height: 100vh;
    background: url('../image/background2.jpg') no-repeat;
@@ -27,6 +28,8 @@ header {
    justify-content: space-between;
    align-items: center;
    z-index: 99;
+   background: rgba(0, 0, 0, 0.5); /* Màu đen với độ trong suốt 0.8 */
+   backdrop-filter: blur(5px);
 }
 
 /* nav */
@@ -126,7 +129,7 @@ header {
 .wrapper .form-box.register {
    height: 600px;
    transition: transform .18s ease;
-   transform: scale(0.8) translateY(-80px) ; 
+   transform: scale(0.6) translateY(-80px) ; 
 }
 
 
@@ -288,7 +291,7 @@ header {
 
 .try-link {
    display: block;
-   background-color: #162938;
+   background-color: #1063b5;
    color: white;
    text-align: center;
    text-decoration: none;
