@@ -21,9 +21,13 @@ from AISpelling import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='home'),
-    path('login/', views.login, name='login'),
+    path('login/', views.log_in, name='login'),
+    path('logout/', views.log_out, name='logout'),
     path('register/', views.register, name='register'),
     path('main_page/', views.main_page, name='main_page'),
     path('activate/<uidb64>/<token>', views.activate, name='activate'),
+    path('login/forget_password/', views.forget_password, name='forget_password'),
+    path('login/forget_password/new_password/', views.new_password, name='new_password'),
+    path('login/forget_password/otp_confirmation/', views.otp_confirmation, name="otp_confirmation"),
 
 ]

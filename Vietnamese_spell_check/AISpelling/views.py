@@ -1,13 +1,13 @@
-from django.shortcuts import render, redirect
-
-# Create your views here.
 from django.shortcuts import render
-from django.contrib import messages
-
-from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import logout
 from django.core.mail import EmailMessage, send_mail
 from django.contrib import messages
 from Vietnamese_spell_check import settings
+from django.contrib.auth.models import User
 from django.utils.encoding import force_bytes, force_str
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
@@ -17,22 +17,31 @@ from . tokens import generate_token
 import mysql.connector
 import random
 import string
-from .models import UserForm
 
 def index(request):
     return render(request, 'index.html')
 
-def login(request):
+def log_in(request):
+    if request.user.is_authenticated:
+        return render(request, 'main.html')
     if request.method == 'POST':
-        email = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
-        try:
-            user = UserForm.objects.get(email=email, password=password)
-            request.session['user_name'] = user.name
-            return redirect('user_page')  # Thay 'user_page' bằng tên đường dẫn của trang người dùng
-        except UserForm.DoesNotExist:
-            messages.error(request, 'Incorrect email or password!')
-    return render(request, 'login.html')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('main_page') 
+        else:
+            msg = 'Error Login'
+            form = AuthenticationForm(request.POST)
+            return render(request, 'index.html',{'msg':msg})
+    else:
+        form = AuthenticationForm()
+        return render(request, 'login.html')
+    
+def log_out(request) :
+    logout (request)
+    return redirect('/')
 
 def register(request):
     if request.method == "POST":
@@ -114,6 +123,80 @@ def activate(request,uidb64,token):
         return redirect('login')
     else:
         return render(request,'activation_failed.html')
+    
+def generate_otp():
+    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+
+
+mydb = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='',
+    database = 'sales_website'
+)
+def forget_password(request):
+    if request.method == 'POST':
+        email_f = request.POST['email']
+        request.session['email_for_reset'] = email_f
+
+        try:
+            user = User.objects.get(email=email_f)
+        except User.DoesNotExist:
+            return render(request, 'forget_password.html', {'msg': 'Tên người dùng hoặc email không chính xác'})
+        except IntegrityError:
+            return render(request, 'forget_password.html', {'msg': 'Có lỗi xảy ra, vui lòng thử lại sau.'})
+        else:
+            otp = generate_otp()
+            # Save the OTP in the server's memory or database
+            request.session['otp'] = otp
+            request.session['email'] = email_f
+
+            # Send OTP to the user's email
+            subject = "Password Reset OTP"
+            message = f"Your OTP for password reset is: {otp}"
+            from_email = settings.EMAIL_HOST_USER
+            to_list = [email_f]
+            send_mail(subject, message, from_email, to_list)
+
+            return redirect('otp_confirmation')
+
+    return render(request, 'forget_password.html')
+
+
+def otp_confirmation(request):
+    if request.method == 'POST':
+        otp_entered = request.POST.get('otp')
+        if otp_entered == request.session.get('otp'):
+            # OTP is correct, proceed to new password confirmation
+            return redirect('new_password')
+        else:
+            return render(request, 'otp_confirmation.html', {'msg': 'Invalid OTP. Please try again.'})
+    return render(request, 'otp_confirmation.html')
+
+def new_password(request):
+    if request.method == 'POST':
+        email = request.session.get('email_for_reset')
+        pass1 = request.POST.get('pass1')
+        pass2 = request.POST.get('pass2')
+        
+        if pass1 == pass2:
+            if email:
+                try:
+                    current_user = User.objects.get(email=email)
+                    current_user.set_password(pass1)
+                    current_user.save()
+                    messages.success(request, "Password changed successfully")
+                    # Clear the email from the session
+                    del request.session['email_for_reset']
+                    return redirect('login')
+                except User.DoesNotExist:
+                    messages.error(request, 'User not found!')
+            else:
+                messages.error(request, 'Email not found in session!')
+        else:
+            messages.error(request, 'Passwords do not match')
+            
+    return render(request, 'new_password.html')
 
 def main_page(request):
     return render(request, 'main.html')

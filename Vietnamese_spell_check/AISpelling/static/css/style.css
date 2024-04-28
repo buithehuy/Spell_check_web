@@ -346,3 +346,30 @@ header {
    background-color: #fff;
    color: #162938;
 }
+
+
+/* Kiểu dáng cho phần input */
+.otp_input input[type="text"] {
+   width: 200px;
+   padding: 10px;
+   margin-bottom: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   outline: none;
+}
+
+/* Kiểu dáng cho nút submit */
+.otp_input button[type="submit"] {
+   padding: 10px 20px;
+   background-color: #007bff;
+   color: #fff;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+/* Kiểu dáng nút submit khi rê chuột */
+.otp_input button[type="submit"]:hover {
+   background-color: #0056b3;
+}
