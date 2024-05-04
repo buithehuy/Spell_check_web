@@ -46,8 +46,6 @@ def log_out(request) :
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
-        first_name = request.POST["first_name"]
-        last_name = request.POST["last_name"]
         email = request.POST["email"]
         pass1 = request.POST["pass1"]
         pass2 = request.POST["pass2"]
@@ -72,8 +70,6 @@ def register(request):
             messages.error(request, "Username must be Alpha-Numeric!!")
             return redirect('register')
         myuser = User.objects.create_user(username, email, pass1)
-        myuser.first_name = first_name
-        myuser.last_name = last_name
         # myuser.is_active = False
         myuser.is_active = False
         myuser.save()
