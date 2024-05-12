@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Kết quả
+{% endblock %}
+
+{% block content %}
+    <h2>Kết quả kiểm tra chính tả</h2>
+    <ul>
+    {% for result in results %}
+        <li>{{ result }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

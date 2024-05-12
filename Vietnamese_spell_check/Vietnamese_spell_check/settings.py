@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-s=qaef&tod&=kiciussdiv8zb#l_8a(1(n!2heox5xz1f1k!a_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'e68e-42-112-40-37.ngrok-free.app']
 
 
 EMAIL_USE_TLS = True
@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'Vietnamese_spell_check.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "sales_website",
+        'NAME': "aispelling",
         'USER': "root",
         'PASSWORD': "",
         'HOST': "localhost",

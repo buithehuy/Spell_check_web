@@ -18,6 +18,13 @@ import mysql.connector
 import random
 import string
 
+import time
+
+from django.http import HttpResponse
+from Spell_check_engine.tool1.predictor import Predictor
+import time
+from Spell_check_engine.tool1.utils import extract_phrases
+
 def index(request):
     return render(request, 'index.html')
 
@@ -128,7 +135,7 @@ mydb = mysql.connector.connect(
     host='localhost',
     user='root',
     password='',
-    database = 'sales_website'
+    database = 'aispelling'
 )
 def forget_password(request):
     if request.method == 'POST':
@@ -194,5 +201,17 @@ def new_password(request):
             
     return render(request, 'new_password.html')
 
+model_predictor = Predictor(device='cpu', model_type='seq2seq', weight_path='./Spell_check_engine/weights/seq2seq_0.pth')
+
+from django.http import JsonResponse
+
+
 def main_page(request):
+    if request.method == 'POST':
+        unacc_paragraphs = request.POST.getlist('unacc_paragraphs[]')
+        results = []
+        for i, p in enumerate(unacc_paragraphs):
+            outs = model_predictor.predict(p.strip(), NGRAM=6)
+            results.append((p, outs))  # Chỉ thêm kết quả đầu ra (outs)
+        return JsonResponse({'results': results})
     return render(request, 'main.html')

@@ -5,9 +5,34 @@
 {% endblock %}
 
 {% block content %}
-    <textarea name="content" placeholder="Nhập nội dung cần kiểm tra chính tả" class="input-field"></textarea>
-    <button class="check">
-        <span class="icon"><ion-icon name="search-outline"></ion-icon></span>
-        Kiểm tra
-    </button>
+    <form id="main-form">
+        {% csrf_token %}
+        <textarea name="unacc_paragraphs[]" id="input-content" placeholder="Nhập nội dung cần kiểm tra chính tả" class="input-field"></textarea>
+        <button type="submit" class="check">
+            <span class="icon"><ion-icon name="search-outline"></ion-icon></span>
+            Kiểm tra
+        </button>
+    </form>
+
+    <script>
+        document.getElementById("main-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            fetch("/main_page/", {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                var inputField = document.getElementById("input-content");
+                var resultText = "";
+                data.results.forEach(result => {
+                    var paragraph = result[0];
+                    var output = result[1];
+                    resultText += paragraph + ":\n" + output + "\n"; // Tạo chuỗi kết quả mới
+                });
+                inputField.value = resultText; // Đặt chuỗi kết quả vào giá trị của ô nhập văn bản
+            });
+        });
+    </script>
 {% endblock %}
