@@ -8,7 +8,7 @@ Vũ Tiến Triển 19020864
 
 
 **REPORT** : https://drive.google.com/file/d/1U2EgmjNs4RXHD0qw1jGIW4EshjABEvj1/view?usp=sharing <br>
-**DEMO VIDEO** : 
+**DEMO VIDEO** : https://drive.google.com/file/d/1GWhpBUXjSqIRQhzsly8SmlzdeGsrFUEI/view?usp=sharing
 
 ________________________________________________________________________________________________________________________________
 
