@@ -5,10 +5,9 @@ Bùi Thế Huy 22022667 <br>
 Cao Tuấn Anh 22022562 <br>
 Vũ Tiến Triển 19020864
 
-Đây là dự án web kiểm tra chính tả được viết bằng HTML, CSS và framwork Django. Dự án sử dụng XAMPP để chạy cơ sở dữ liệu.
 
 
-*Báo cáo* : https://drive.google.com/file/d/1U2EgmjNs4RXHD0qw1jGIW4EshjABEvj1/view?usp=sharing
+*__Report_* : https://drive.google.com/file/d/1U2EgmjNs4RXHD0qw1jGIW4EshjABEvj1/view?usp=sharing <br>
 *Demo video*: 
 
 ________________________________________________________________________________________________________________________________
