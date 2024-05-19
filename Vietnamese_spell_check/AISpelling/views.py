@@ -83,7 +83,7 @@ def register(request):
         messages.success(request,
                          "Your Account has been created succesfully!! Please check your email to confirm your email address in order to activate your account.")
 
-        # Welcome Email
+       
         subject = "Welcome to AISpelling"
         message = "Hello " + myuser.first_name + "!! \n" + "Welcome to AISpelling!! \nThank you for visiting our website\n. We have also sent you a confirmation email, please confirm your email address. \n\nThanking You\nShovit Nepal"
         from_email = settings.EMAIL_HOST_USER
@@ -212,6 +212,6 @@ def main_page(request):
         results = []
         for i, p in enumerate(unacc_paragraphs):
             outs = model_predictor.predict(p.strip(), NGRAM=6)
-            results.append((p, outs))  # Chỉ thêm kết quả đầu ra (outs)
+            results.append((p, outs))
         return JsonResponse({'results': results})
     return render(request, 'main.html')
