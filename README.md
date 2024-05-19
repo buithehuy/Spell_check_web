@@ -7,23 +7,13 @@ Vũ Tiến Triển 19020864
 
 Đây là dự án web kiểm tra chính tả được viết bằng HTML, CSS và framwork Django. Dự án sử dụng XAMPP để chạy cơ sở dữ liệu.
 
-## Cài Đặt
 
-1. Đảm bảo bạn đã cài đặt XAMPP trên máy tính của mình.
-2. Clone repository này về máy tính của bạn.
-3. Mở XAMPP và khởi động Apache và MySQL.
-4. Import cơ sở dữ liệu từ file `database.sql`.
+*Báo cáo* : https://drive.google.com/file/d/1U2EgmjNs4RXHD0qw1jGIW4EshjABEvj1/view?usp=sharing
+*Demo video*: 
+
+________________________________________________________________________________________________________________________________
 
 
-## Đóng Góp
-
-Chúng tôi rất hoan nghênh sự đóng góp từ cộng đồng. Nếu bạn muốn đóng góp vào dự án, vui lòng làm theo các bước sau:
-
-1. Fork repository này.
-2. Tạo một nhánh mới (`git checkout -b feature/feature-name`).
-3. Commit các thay đổi của bạn (`git commit -am 'Add new feature'`).
-4. Push nhánh của bạn lên (`git push origin feature/feature-name`).
-5. Tạo một Pull Request.
 
 ## Giấy Phép
 
